@@ -78,4 +78,15 @@ public class GridTest
         g = g.Step();
         Assert.IsFalse(g.HasLiveCellAt(0,0));
     }
+
+    [Test]
+    public void TwoByTwoGridCellAtOriginAliveAfterOneStep()
+    {
+        Grid g = new Grid(new int[,] {{1,1}, {1,0}});
+        g = g.Step();
+        Assert.IsTrue(g.HasLiveCellAt(0,0));
+        Assert.IsTrue(g.HasLiveCellAt(0,1));
+        Assert.IsTrue(g.HasLiveCellAt(1,1));
+        Assert.IsTrue(g.HasLiveCellAt(1,0));
+    }
 }

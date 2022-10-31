@@ -18,21 +18,21 @@ public class AliveCellTest
 
     [Test]
     public void CellWillBeDeadInNextIterationIfFewerThanTwoLiveNeighbours(){
-        AliveCell ac = new AliveCell();
+        Cell ac = new AliveCell();
         Assert.IsFalse(ac.Step(0).IsAlive());
         Assert.IsFalse(ac.Step(1).IsAlive());
     }
 
     [Test]
     public void CellWillBeDeadInNextIterationIfMoreThanThreeLiveNeighbours(){
-        AliveCell ac = new AliveCell();
+        Cell ac = new AliveCell();
         Assert.IsFalse(ac.Step(4).IsAlive());
         Assert.IsFalse(ac.Step(100).IsAlive());
     }
 
         [Test]
     public void CellWillBeAliveInNextIterationIfTwoOrThreeLiveNeighbours(){
-        AliveCell ac = new AliveCell();
+        Cell ac = new AliveCell();
         Assert.IsTrue(ac.Step(2).IsAlive());
         Assert.IsTrue(ac.Step(3).IsAlive());
     }

@@ -21,12 +21,7 @@ public class Grid
     }
 
     private Grid(Cell[,] cells){
-        this.cells = new Cell[cells.GetLength(0), cells.GetLength(1)];
-        for (int x = 0; x < cells.GetLength(0); x++){
-            for (int y = 0; y < cells.GetLength(1); y++){
-                this.cells[x,y] = cells[x,y];
-            }
-        }
+        this.cells = cells;
     }
 
     public int Width { get; }
@@ -43,8 +38,31 @@ public class Grid
 
     public Grid Step()
     {
-        Grid g = new Grid(cells);
-        g.SetCellAt(0,0, new DeadCell());
-        return g;
+        Cell[,] newCells = new Cell[cells.GetLength(0), cells.GetLength(1)]; 
+        for (int x = 0; x < cells.GetLength(0); x++){
+            for (int y = 0; y < cells.GetLength(1); y++){
+                int numberOfLiveNeighbours = countLiveNeighbours(x,y);
+                newCells[x,y] = cells[x,y].Step(numberOfLiveNeighbours);
+            }
+        }
+        return new Grid(newCells);
+    }
+
+    private int countLiveNeighbours(int x, int y)
+    {
+        int numberOfLiveNeighbours = 0;
+        for (int currentX = x-1; currentX < x+2; currentX++){
+            if (currentX >= 0 && currentX < cells.GetLength(0) ){
+                for (int currentY = y-1; currentY < y+2; currentY++){
+                    if (currentX == x && currentY == y) continue;
+                    if (currentY >= 0 && currentY < cells.GetLength(1) ){
+                        if (cells[currentX, currentY].IsAlive()) {
+                            numberOfLiveNeighbours++;
+                        }
+                    }
+                }
+            }
+        }   
+        return numberOfLiveNeighbours;
     }
 }

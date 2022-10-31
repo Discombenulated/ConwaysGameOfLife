@@ -18,13 +18,13 @@ public class DeadCellTest
 
     [Test]
     public void CellWillBeAliveInNextIterationIfThreeLiveNeighbours(){
-        DeadCell ac = new DeadCell();
+        Cell ac = new DeadCell();
         Assert.IsTrue(ac.Step(3).IsAlive());
     }
 
     [Test]
     public void CellWillBeADeadInNextIterationIfNotThreeLiveNeighbours(){
-        DeadCell ac = new DeadCell();
+        Cell ac = new DeadCell();
         Assert.IsFalse(ac.Step(0).IsAlive());
         Assert.IsFalse(ac.Step(2).IsAlive());
         Assert.IsFalse(ac.Step(4).IsAlive());
