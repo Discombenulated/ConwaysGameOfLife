@@ -15,4 +15,11 @@ public class GridTest
         Grid g = new Grid(new int[,] {{1}});
         Assert.IsTrue(g.HasLiveCellAt(0,0));
     }
+
+    [Test]
+    public void OneByOneGridCellAtOriginIsDead()
+    {
+        Grid g = new Grid(new int[,] {{0}});
+        Assert.IsFalse(g.HasLiveCellAt(0,0));
+    }
 }

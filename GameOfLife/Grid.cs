@@ -6,10 +6,16 @@ public class Grid
 
     public Grid(int[,] gridMap)
     {
-        cells = new Cell[gridMap.Rank, gridMap.GetLength(0)];
-        for (int x = 0; x < gridMap.Rank; x++){
+        if (gridMap.Rank != 2) throw new InvalidOperationException("Should be a 2 dimensional array");
+        cells = new Cell[gridMap.GetLength(0), gridMap.GetLength(1)];
+        for (int x = 0; x < gridMap.Length; x++){
             for (int y = 0; y < gridMap.GetLength(x); y++){
-                cells[x,y] = new AliveCell();
+                int aliveOrDead = gridMap[x, y];
+                if (aliveOrDead == 1){
+                    cells[x,y] = new AliveCell();
+                } else {
+                    cells[x,y] = new DeadCell();
+                }
             }
         }
     }
