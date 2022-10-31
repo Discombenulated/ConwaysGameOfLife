@@ -20,11 +20,31 @@ public class Grid
         }
     }
 
+    private Grid(Cell[,] cells){
+        this.cells = new Cell[cells.GetLength(0), cells.GetLength(1)];
+        for (int x = 0; x < cells.GetLength(0); x++){
+            for (int y = 0; y < cells.GetLength(1); y++){
+                this.cells[x,y] = cells[x,y];
+            }
+        }
+    }
+
     public int Width { get; }
     public int Height { get; }
 
     public bool HasLiveCellAt(int x, int y)
     {
         return cells[x,y].IsAlive();
+    }
+
+    private void SetCellAt(int x, int y, Cell cell){
+        cells[x,y] = cell;
+    }
+
+    public Grid Step()
+    {
+        Grid g = new Grid(cells);
+        g.SetCellAt(0,0, new DeadCell());
+        return g;
     }
 }

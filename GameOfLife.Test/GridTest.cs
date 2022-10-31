@@ -70,4 +70,12 @@ public class GridTest
         Assert.IsTrue(g.HasLiveCellAt(1,1));
         Assert.IsTrue(g.HasLiveCellAt(1,0));
     }
+
+    [Test]
+    public void OneByOneGridCellAtOriginIsDeadAfterStep()
+    {
+        Grid g = new Grid(new int[,] {{1}});
+        g = g.Step();
+        Assert.IsFalse(g.HasLiveCellAt(0,0));
+    }
 }
