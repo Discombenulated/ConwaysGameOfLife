@@ -1,9 +1,6 @@
 namespace GameOfLife;
 
-public class Cell
+public interface Cell
 {
-    public bool IsAlive()
-    {
-        return true;
-    }
+    public bool IsAlive();
 }

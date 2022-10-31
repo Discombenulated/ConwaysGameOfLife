@@ -12,7 +12,7 @@ public class GridTest
     [Test]
     public void OneByOneGridCellAtOriginIsAlive()
     {
-        Grid g = new Grid(1,1);
+        Grid g = new Grid(new int[,] {{1}});
         Assert.IsTrue(g.HasLiveCellAt(0,0));
     }
 }

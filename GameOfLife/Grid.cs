@@ -2,10 +2,16 @@ namespace GameOfLife;
 
 public class Grid
 {
-    public Grid(int width, int height)
+    private Cell[,] cells;
+
+    public Grid(int[,] gridMap)
     {
-        Width = width;
-        Height = height;
+        cells = new Cell[gridMap.Rank, gridMap.GetLength(0)];
+        for (int x = 0; x < gridMap.Rank; x++){
+            for (int y = 0; y < gridMap.GetLength(x); y++){
+                cells[x,y] = new AliveCell();
+            }
+        }
     }
 
     public int Width { get; }
@@ -13,6 +19,6 @@ public class Grid
 
     public bool HasLiveCellAt(int x, int y)
     {
-        return true;
+        return cells[x,y].IsAlive();
     }
 }
