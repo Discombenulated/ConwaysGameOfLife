@@ -65,4 +65,24 @@ public class Grid
         }   
         return numberOfLiveNeighbours;
     }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is not Grid) return false;
+        return Equals((Grid)obj);
+    }
+
+    public bool Equals(Grid other){
+        if (cells.GetLength(0) != other.cells.GetLength(0)) return false;
+        if (cells.GetLength(1) != other.cells.GetLength(1)) return false;
+        for (int x = 0; x < cells.GetLength(0); x++){
+            for (int y = 0; y < cells.GetLength(1); y++){
+                if (cells[x,y].IsAlive() != other.cells[x,y].IsAlive()){
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
 }

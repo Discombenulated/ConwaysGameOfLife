@@ -89,4 +89,21 @@ public class GridTest
         Assert.IsTrue(g.HasLiveCellAt(1,1));
         Assert.IsTrue(g.HasLiveCellAt(1,0));
     }
+
+    [Test]
+    public void TwoByTwoGridsAreEqual()
+    {
+        Grid g = new Grid(new int[,] {{1,1}, {1,0}});
+        Grid g2 = new Grid(new int[,]{{1,1}, {1,0}});
+        Assert.AreEqual(g, g2);
+    }
+    
+    [Test]
+    public void TwoByTwoGridsAreNotEqual()
+    {
+        Grid g = new Grid(new int[,] {{1,1}, {1,0}});
+        Grid g2 = new Grid(new int[,]{{1,1}, {1,1}});
+        Assert.AreNotEqual(g, g2);
+    }
+
 }
