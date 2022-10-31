@@ -15,4 +15,18 @@ public class AliveCellTest
         Cell c = new AliveCell();
         Assert.IsTrue(c.IsAlive());
     }
+
+    [Test]
+    public void CellWillBeDeadInNextIterationIfFewerThanTwoLiveNeighbours(){
+        AliveCell ac = new AliveCell();
+        Assert.IsFalse(ac.Step(0).IsAlive());
+        Assert.IsFalse(ac.Step(1).IsAlive());
+    }
+
+    [Test]
+    public void CellWillBeDeadInNextIterationIfMoreThanThreeLiveNeighbours(){
+        AliveCell ac = new AliveCell();
+        Assert.IsFalse(ac.Step(4).IsAlive());
+        Assert.IsFalse(ac.Step(100).IsAlive());
+    }
 }
