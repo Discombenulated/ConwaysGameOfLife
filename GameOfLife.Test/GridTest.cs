@@ -50,4 +50,24 @@ public class GridTest
         Grid g = new Grid(new int[,] {{0,0}});
         Assert.IsFalse(g.HasLiveCellAt(0,0));
     }
+
+    [Test]
+    public void TwoByTwoGridCellAtOriginIsAlive()
+    {
+        Grid g = new Grid(new int[,] {{1,0}, {0,0}});
+        Assert.IsTrue(g.HasLiveCellAt(0,0));
+        Assert.IsFalse(g.HasLiveCellAt(0,1));
+        Assert.IsFalse(g.HasLiveCellAt(1,1));
+        Assert.IsFalse(g.HasLiveCellAt(1,0));
+    }
+
+    [Test]
+    public void TwoByTwoGridCellAtOriginIsDead()
+    {
+        Grid g = new Grid(new int[,] {{0,1}, {1,1}});
+        Assert.IsFalse(g.HasLiveCellAt(0,0));
+        Assert.IsTrue(g.HasLiveCellAt(0,1));
+        Assert.IsTrue(g.HasLiveCellAt(1,1));
+        Assert.IsTrue(g.HasLiveCellAt(1,0));
+    }
 }
