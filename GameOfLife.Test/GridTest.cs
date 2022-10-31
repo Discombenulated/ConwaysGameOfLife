@@ -22,4 +22,18 @@ public class GridTest
         Grid g = new Grid(new int[,] {{0}});
         Assert.IsFalse(g.HasLiveCellAt(0,0));
     }
+
+    [Test]
+    public void OneByTwoGridCellAtOriginIsAlive()
+    {
+        Grid g = new Grid(new int[,] {{1}, {0}});
+        Assert.IsTrue(g.HasLiveCellAt(0,0));
+    }
+
+    [Test]
+    public void OneByTwoGridCellAtOriginIsDead()
+    {
+        Grid g = new Grid(new int[,] {{0}, {0}});
+        Assert.IsFalse(g.HasLiveCellAt(0,0));
+    }
 }

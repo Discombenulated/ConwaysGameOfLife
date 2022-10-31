@@ -8,8 +8,8 @@ public class Grid
     {
         if (gridMap.Rank != 2) throw new InvalidOperationException("Should be a 2 dimensional array");
         cells = new Cell[gridMap.GetLength(0), gridMap.GetLength(1)];
-        for (int x = 0; x < gridMap.Length; x++){
-            for (int y = 0; y < gridMap.GetLength(x); y++){
+        for (int x = 0; x < gridMap.GetLength(0); x++){
+            for (int y = 0; y < gridMap.GetLength(1); y++){
                 int aliveOrDead = gridMap[x, y];
                 if (aliveOrDead == 1){
                     cells[x,y] = new AliveCell();
