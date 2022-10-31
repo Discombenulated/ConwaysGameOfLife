@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 namespace GameOfLife.Test;
 
-public class Tests
+public class CellTest
 {
     [SetUp]
     public void Setup()
@@ -10,8 +10,9 @@ public class Tests
     }
 
     [Test]
-    public void Test1()
+    public void CellIsAlive()
     {
-        Assert.Pass();
+        Cell c = new Cell();
+        Assert.IsTrue(c.IsAlive());
     }
 }
