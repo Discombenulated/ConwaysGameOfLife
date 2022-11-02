@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace GameOfLife;
 
 public class Grid
@@ -84,5 +86,22 @@ public class Grid
         }
 
         return true;
+    }
+
+    public override string ToString()
+    {
+        StringBuilder sb = new StringBuilder();
+        for (int y = 0; y < cells.GetLength(0); y++){
+            if (y > 0) {
+                sb.Append(Environment.NewLine);
+            }
+            for (int x = 0; x < cells.GetLength(1); x++){
+                if (x > 0) {
+                    sb.Append(" ");
+                }
+                sb.Append(cells[x,y]);
+            }
+        }
+        return sb.ToString();
     }
 }

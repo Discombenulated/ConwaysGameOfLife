@@ -13,4 +13,9 @@ public class DeadCell : Cell
         }
         return this;
     }
+
+    public override string ToString()
+    {
+        return "0";
+    }
 }

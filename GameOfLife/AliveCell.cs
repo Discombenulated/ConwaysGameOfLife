@@ -13,4 +13,9 @@ public class AliveCell : Cell
         }
         return new DeadCell();
     }
+
+    public override string ToString()
+    {
+        return "1";
+    }
 }
