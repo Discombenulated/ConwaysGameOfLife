@@ -116,6 +116,14 @@ public class GridTest
     }
 
     [Test]
+    public void TwoByThreeGridStringRepresentation()
+    {
+        Grid g = new Grid(new int[,] {{1,1,1}, {1,0,1}});
+        var expected = "1 1 1" + Environment.NewLine + "1 0 1";
+        Assert.AreEqual(expected, g.ToString());
+    }
+
+    [Test]
     public void ThreeByThreeGridCellCorrectAfterTwoSteps()
     {
         Grid g = new Grid(new int[,] {{1,1,0}, {1,0,0}, {0,0,0}});

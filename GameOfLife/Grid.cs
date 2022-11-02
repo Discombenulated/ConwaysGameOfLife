@@ -26,8 +26,12 @@ public class Grid
         this.cells = cells;
     }
 
-    public int Width { get; }
-    public int Height { get; }
+    private int Width { get{
+        return cells.GetLength(1);
+    } }
+    private int Height { get{
+        return cells.GetLength(0);
+    } }
 
     public bool HasLiveCellAt(int x, int y)
     {
@@ -91,15 +95,15 @@ public class Grid
     public override string ToString()
     {
         StringBuilder sb = new StringBuilder();
-        for (int y = 0; y < cells.GetLength(0); y++){
+        for (int y = 0; y < Height; y++){
             if (y > 0) {
                 sb.Append(Environment.NewLine);
             }
-            for (int x = 0; x < cells.GetLength(1); x++){
+            for (int x = 0; x < Width; x++){
                 if (x > 0) {
                     sb.Append(" ");
                 }
-                sb.Append(cells[x,y]);
+                sb.Append(cells[y,x]);
             }
         }
         return sb.ToString();
