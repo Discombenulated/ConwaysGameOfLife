@@ -150,4 +150,24 @@ public class GridTest
         Grid g3 = new Grid(new int[,] {{0,0,0}, {0,0,0}, {0,0,0}});
         Assert.AreEqual(g3, g);
     }
+
+    [Test]
+    public void Oscillator_Beacon()
+    {
+        Grid g = new Grid(new int[,] {{1,1,0,0}, {1,1,0,0}, {0,0,1,1}, {0,0,1,1}});
+        g = g.Step();
+        Grid g2 = new Grid(new int[,] {{1,1,0,0}, {1,0,0,0}, {0,0,0,1}, {0,0,1,1}});
+        Assert.AreEqual(g2, g);
+        g = g.Step();
+        Grid g3 = new Grid(new int[,] {{1,1,0,0}, {1,1,0,0}, {0,0,1,1}, {0,0,1,1}});
+        Assert.AreEqual(g3, g);
+    }
+
+    [Test]
+    public void Still_Tub(){
+        Grid g = new Grid(new int[,] {{0,1,0}, {1,0,1}, {0,1,0}});
+        g = g.Step();
+        Grid g2 = new Grid(new int[,] {{0,1,0}, {1,0,1}, {0,1,0}});
+        Assert.AreEqual(g2, g);
+    }
 }
